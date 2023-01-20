@@ -8,8 +8,16 @@ public class EjemploExtenderThreads {
 
        Thread hilo = new nombreThread("Hilo uno");
           hilo.start();
-          Thread.sleep(100);
+          //Thread.sleep(1000);
+
+       Thread hilo2 = new nombreThread("Hilo Do2");
+          hilo2.start();
+
+          nombreThread hilo3 = new nombreThread("hilo Tr3s ");
+          hilo3.start();
+
         System.out.println(hilo.getState());
+
 
     }
 
