@@ -13,14 +13,14 @@ public class Panaderia {
             }
         }
         this.pan = masa;
-        System.out.println("panadero horneando" + masa);
+        System.out.println(" panadero horneando " + masa);
         this.disponible = true;
          notify();
     }
 
     public synchronized String Consumir(){
 
-          while(disponible){
+          while(!disponible){
               try {
                   wait();
               } catch (InterruptedException e) {
