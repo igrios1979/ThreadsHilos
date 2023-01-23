@@ -1,4 +1,4 @@
-package com.ignacio.rios.hilosEjemplos;
+package com.ignacio.rios;
 
 import com.ignacio.rios.hilosEjemplos.Threads.nombreThread;
 

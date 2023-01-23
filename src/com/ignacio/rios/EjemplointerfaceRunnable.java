@@ -1,4 +1,6 @@
-package com.ignacio.rios.Runnable;
+package com.ignacio.rios;
+
+import com.ignacio.rios.Runnable.ViajeTarea;
 
 public class EjemplointerfaceRunnable {
     public static void main(String[] args) {

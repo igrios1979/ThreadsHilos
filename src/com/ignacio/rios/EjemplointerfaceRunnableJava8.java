@@ -1,4 +1,4 @@
-package com.ignacio.rios.Runnable;
+package com.ignacio.rios;
 
 public class EjemplointerfaceRunnableJava8 {
     public static void main(String[] args) throws InterruptedException {
