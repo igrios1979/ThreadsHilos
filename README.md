@@ -14,6 +14,6 @@
 # 265 Ejemplo de sincronizacion Productor consumidor
 # 266 usando Timer y TimerTask para agendar tareas programadas
 # 267 Agendando tareas programadas que se repiten cada cierto periodo de tiempo
-
+ ## AtomicInteger -> uso de esta clase y su metodo de obtener y decrementar 
 # 265 Ejemplo de sincro Productor consumidor con Java8
 
