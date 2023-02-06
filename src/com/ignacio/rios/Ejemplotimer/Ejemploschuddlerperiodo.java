@@ -4,7 +4,7 @@ import java.util.Date;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class Ejemploschuddler {
+public class Ejemploschuddlerperiodo {
 
     public static void main(String[] args) {
 
