@@ -8,11 +8,12 @@ public class EjemploExecutor {
     public static void main(String[] args) throws InterruptedException {
 
         ExecutorService exec = Executors.newSingleThreadExecutor();
+
         Runnable tarea = () -> {
             System.out.println("Inicio de la tarea ..... ");
             try {
                 System.out.println("Nombre del Thread = " + Thread.currentThread().getName());
-                TimeUnit.SECONDS.sleep(1);
+                TimeUnit.SECONDS.sleep(5);
             } catch (InterruptedException e) {
                 Thread.currentThread().interrupt(); // Interrumpe la ejecucion
                 e.printStackTrace();
@@ -24,7 +25,7 @@ public class EjemploExecutor {
         exec.submit(tarea);
         exec.shutdown();
         System.out.println("Continuando con  la ejecucion del main 1..>" );
-       exec.awaitTermination(5,TimeUnit.SECONDS);
+       exec.awaitTermination(2,TimeUnit.SECONDS);
         System.out.println("Continuando con  la ejecucion del main 2..>" );
     }
 }
