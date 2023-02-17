@@ -6,7 +6,7 @@ public class EjemploExecutorFuture3 {
     public static void main(String[] args) throws InterruptedException,
             ExecutionException, TimeoutException {
 
-        ExecutorService exec = Executors.newFixedThreadPool(3);
+        ExecutorService exec = Executors.newFixedThreadPool(3); // pool de tres hilos
 
         Callable<String> tarea = () -> { // tarea CALLABLE develve algo
             System.out.println("Inicio de la tarea ..... ");
@@ -46,10 +46,16 @@ public class EjemploExecutorFuture3 {
             TimeUnit.MILLISECONDS.sleep(100);
 
         }
-
+        System.out.println("----------------------------------------------" );
         System.out.println("resultado.isDone() = " + resultado.isDone());
-       // System.out.println("resultado "+resultado.get(1,TimeUnit.SECONDS));
-        System.out.println("FINALIZA LA TAREA = " + resultado.isDone());
+        System.out.println("FINALIZA LA TAREA 1  = " + resultado.isDone());
+        System.out.println("----------------------------------------------" );
+        System.out.println("resultado.isDone() = " + resultado2.isDone());
+        System.out.println("FINALIZA LA TAREA 2 = " + resultado2.isDone());
+        System.out.println("----------------------------------------------" );
+
+        System.out.println("resultado.isDone() = " + resultado3.isDone());
+        System.out.println("FINALIZA LA TAREA 3 = " + resultado3.isDone());
 
 
 

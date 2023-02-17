@@ -1,15 +1,18 @@
 package com.ignacio.rios.EjemploExecutor;
 
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.TimeUnit;
+import java.util.concurrent.*;
 
 public class EjemploExecutor {
     public static void main(String[] args) throws InterruptedException {
 
-        ExecutorService exec = Executors.newSingleThreadExecutor();
+        ThreadPoolExecutor exec = (ThreadPoolExecutor) Executors.newFixedThreadPool(3);
 
-        Runnable tarea = () -> {
+        System.out.println("Tamaño del pool --->" +exec.getPoolSize());
+        System.out.println("Cantidad de Tareas en cola ---> " + exec.getQueue().size());
+
+
+
+        Callable<String> tarea = () -> { // tarea CALLABLE develve algo
             System.out.println("Inicio de la tarea ..... ");
             try {
                 System.out.println("Nombre del Thread = " + Thread.currentThread().getName());
@@ -18,14 +21,53 @@ public class EjemploExecutor {
                 Thread.currentThread().interrupt(); // Interrumpe la ejecucion
                 e.printStackTrace();
             }
-            System.out.println("Finaliza la tarea"  );
+            System.out.println("Finaliza la tarea 1"  );
+            return "algun dato para devolver"; // devuelve strig
         };
 
 
-        exec.submit(tarea);
+        Callable<Integer> tarea2 = ()->{
+            System.out.println(" Iniciando tarea 3 (Tres) ---->>> " );
+            TimeUnit.SECONDS.sleep(5);
+            return 10;
+        };
+
+        Future<String> resultado = exec.submit(tarea);
+        Future<String> resultado2 = exec.submit(tarea);
+        Future<Integer> resultado3 = exec.submit(tarea2);
+
         exec.shutdown();
-        System.out.println("Continuando con  la ejecucion del main 1..>" );
-       exec.awaitTermination(2,TimeUnit.SECONDS);
-        System.out.println("Continuando con  la ejecucion del main 2..>" );
+
+        while(!(resultado.isDone())&& resultado2.isDone() && resultado3.isDone()){
+
+            System.out.println(String.format("resultado: %s - resultado2 %s - resutlatado3 %s",
+                    resultado.isDone()? "finalizo"  :"en proceso ",
+                    resultado2.isDone()? "finalizo" :"en proceso ",
+                    resultado3.isDone()? "finalizo" :"en proceso "
+            ));
+
+
+            TimeUnit.MILLISECONDS.sleep(100);
+
+        }
+        System.out.println("----------------------------------------------" );
+        System.out.println("resultado.isDone() = " + resultado.isDone());
+        System.out.println("FINALIZA LA TAREA 1  = " + resultado.isDone());
+        System.out.println("----------------------------------------------" );
+
+        System.out.println("Tamaño del pool  --->> " +exec.getPoolSize());
+        System.out.println("Cantidad de Tareas en cola --->>  " + exec.getQueue().size());
+        System.out.println("----------------------------------------------" );
+
+        System.out.println("resultado.isDone() = " + resultado2.isDone());
+        System.out.println("FINALIZA LA TAREA 2 = " + resultado2.isDone());
+        System.out.println("----------------------------------------------" );
+
+        System.out.println("resultado.isDone() = " + resultado3.isDone());
+        System.out.println("FINALIZA LA TAREA 3 = " + resultado3.isDone());
+
+
+
+
     }
 }
