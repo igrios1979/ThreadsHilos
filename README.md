@@ -16,5 +16,10 @@
 # 267 Agendando tareas programadas que se repiten cada cierto periodo de tiempo
  ## AtomicInteger -> uso de esta clase y su metodo de obtener y decrementar 
  ## Toolkit beep
-# 265 Ejemplo de sincro Productor consumidor con Java8
+# 268 Executor Framework --> Single thread Executor
+# 269 Executor Framework --> Future
+# 270 Executor Framework --> Fixed Thread Pool
+# 271 Executor Framework --> Personalizando parametros del pool con ThreadPoolExecutor
+# 272 
+
 
