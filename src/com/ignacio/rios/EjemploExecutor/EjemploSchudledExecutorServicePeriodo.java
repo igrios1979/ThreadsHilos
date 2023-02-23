@@ -19,6 +19,7 @@ public class EjemploSchudledExecutorServicePeriodo {
             try {
                 TimeUnit.MILLISECONDS.sleep(500);
                 //locked.countDown();
+                contador.getAndDecrement();
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -31,8 +32,16 @@ public class EjemploSchudledExecutorServicePeriodo {
 
 
 
-        future.cancel(true);
+       // future.cancel(true);
          // TimeUnit.SECONDS.sleep(10);
+        while(contador.get() >=0){
+                if(contador.get() == 0){
+                    future.cancel(true);
+                    contador.getAndDecrement();
+
+                }
+
+        }
 
         System.out.println("otra tarea ................");
 
