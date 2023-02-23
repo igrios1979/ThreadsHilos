@@ -19,10 +19,6 @@ public class EjemploExecutorProductorConsumidor {
 
         Future<?> futuro1 = exec.submit(productor);
         Future<?> futuro2 = exec.submit(consumidor);
-
-
-
-
         exec.shutdown();
 
 
